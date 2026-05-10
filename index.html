@@ -281,11 +281,11 @@
         <aside id="sidebar" class="w-64 glass border-r border-slate-800 flex flex-col hidden md:flex overflow-hidden">
             <div class="p-6 flex items-center gap-3 logo-container">
                 <div class="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm shrink-0 overflow-hidden p-1">
-                    <img src="file:///Users/greeme/.gemini/antigravity/brain/caa91074-c36b-4766-a23d-39b96bc3050c/media__1778329129641.png" alt="Elentec Logo" class="w-full h-auto object-contain">
+                    <img src="assets/logo.png" alt="동양이엔피 Logo" class="w-full h-auto object-contain">
                 </div>
                 <div class="overflow-hidden">
                     <h1 class="text-xl font-bold tracking-tight whitespace-nowrap">AX Platform</h1>
-                    <p class="text-[18px] text-slate-400 font-bold whitespace-nowrap leading-tight">(주)이랜텍</p>
+                    <p class="text-[18px] text-slate-400 font-bold whitespace-nowrap leading-tight">동양이엔피</p>
                 </div>
             </div>
 
@@ -489,6 +489,223 @@
             <div class="flex gap-3">
                 <button onclick="closeTemplateModal()" class="flex-1 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold transition-all">취소</button>
                 <button onclick="saveTemplateAction()" class="flex-1 py-3 bg-primary hover:bg-primary/80 text-white rounded-xl font-bold transition-all shadow-lg shadow-primary/20">저장하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Manual Modal -->
+    <div id="user-manual-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[200] hidden items-center justify-center p-4">
+        <div class="bg-white w-full max-w-5xl h-[85vh] rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden flex flex-col animate-fade-in">
+            <!-- Modal Header -->
+            <div class="p-8 border-b border-slate-100 bg-sky-50 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-4">
+                    <div class="p-3 bg-white rounded-2xl text-sky-600 shadow-sm border border-sky-100">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 tracking-tight">과제 진척 리포트 활용 가이드</h3>
+                        <p class="text-slate-500 text-sm mt-1">리포트 지표 산출 기준 및 데이터 비교 방법 안내</p>
+                    </div>
+                </div>
+                <button onclick="closeUserManual()" class="w-12 h-12 flex items-center justify-center rounded-2xl hover:bg-white hover:shadow-md transition-all text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="flex-1 flex overflow-hidden">
+                <!-- Tabs Sidebar -->
+                <div class="w-64 border-r border-slate-100 bg-slate-50 p-6 space-y-3 shrink-0">
+                    <button onclick="switchManualTab('features')" id="manual-tab-btn-features" class="manual-tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 active-tab font-bold bg-blue-600 text-white shadow-md">
+                        <i data-lucide="layout" class="w-4 h-4"></i>
+                        <span class="text-sm">리포트 활용법</span>
+                    </button>
+                    <button onclick="switchManualTab('kpi')" id="manual-tab-btn-kpi" class="manual-tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+                        <span class="text-sm">단계 및 KPI 정의</span>
+                    </button>
+                    <button onclick="switchManualTab('glossary')" id="manual-tab-btn-glossary" class="manual-tab-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all duration-200 bg-slate-100 text-slate-600 hover:bg-slate-200 font-bold">
+                        <i data-lucide="book" class="w-4 h-4"></i>
+                        <span class="text-sm">리포트 용어사전</span>
+                    </button>
+                </div>
+
+                <!-- Tab Panels Area -->
+                <div class="flex-1 overflow-y-auto p-10 custom-scrollbar bg-white">
+                    <!-- Features Content -->
+                    <div id="manual-panel-features" class="manual-panel space-y-10">
+                        <section>
+                            <h4 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                <span class="w-2 h-7 bg-sky-500 rounded-full"></span>
+                                주간 데이터 비교 분석
+                            </h4>
+                            <div class="space-y-4">
+                                <div class="bg-sky-50/50 border border-sky-100 p-8 rounded-[2.5rem] flex gap-8 items-start">
+                                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-sky-600 shadow-sm border border-sky-100 shrink-0">
+                                        <i data-lucide="check-square" class="w-7 h-7"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 text-lg mb-2">비교 주차 선택 (Multi-Select)</h5>
+                                        <p class="text-slate-600 leading-relaxed">상단의 <b>'비교 주차 선택'</b> 버튼을 클릭하여 분석하고자 하는 주차를 다중 선택할 수 있습니다. 선택된 모든 주차의 데이터가 차트에 실시간으로 로드됩니다.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-50 border border-slate-100 p-8 rounded-[2.5rem] flex gap-8 items-start">
+                                    <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-blue-600 shadow-sm border border-slate-200 shrink-0">
+                                        <i data-lucide="palette" class="w-7 h-7"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold text-slate-900 text-lg mb-2">그래프 시각화 및 정렬 규칙</h5>
+                                        <p class="text-slate-600 leading-relaxed mb-4">시간 흐름에 따른 진척도 변화를 명확히 구분하기 위해 다음과 같은 색상 규칙이 적용됩니다.</p>
+                                        <div class="flex gap-4">
+                                            <div class="flex items-center gap-2 px-3 py-1.5 bg-white border border-slate-200 rounded-lg shadow-sm">
+                                                <div class="w-3 h-3 bg-slate-300 rounded-full"></div>
+                                                <span class="text-xs font-bold text-slate-600">과거 주차: 회색</span>
+                                            </div>
+                                            <div class="flex items-center gap-2 px-3 py-1.5 bg-white border border-blue-200 rounded-lg shadow-sm">
+                                                <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                                                <span class="text-xs font-bold text-blue-600">최신 주차: 보라(강조)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section>
+                            <h4 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                <span class="w-2 h-7 bg-blue-500 rounded-full"></span>
+                                데이터 활용 (필터 및 내보내기)
+                            </h4>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="bg-white border border-slate-200 p-6 rounded-[2rem] shadow-sm space-y-3">
+                                    <h5 class="font-bold text-blue-600 flex items-center gap-2">
+                                        <i data-lucide="filter" class="w-5 h-5"></i> 다차원 필터링
+                                    </h5>
+                                    <p class="text-sm text-slate-500 leading-relaxed">부서, 단계, 등급 필터를 조합하여 필요한 과제만 선별 조회할 수 있습니다.</p>
+                                </div>
+                                <div class="bg-white border border-slate-200 p-6 rounded-[2rem] shadow-sm space-y-3">
+                                    <h5 class="font-bold text-blue-600 flex items-center gap-2">
+                                        <i data-lucide="download" class="w-5 h-5"></i> 리포트 저장
+                                    </h5>
+                                    <p class="text-sm text-slate-500 leading-relaxed">필터링된 데이터를 엑셀 또는 PDF 형식으로 즉시 저장할 수 있습니다.</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- KPI Content -->
+                    <div id="manual-panel-kpi" class="manual-panel hidden space-y-10">
+                        <section>
+                            <h4 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                <span class="w-2 h-7 bg-green-500 rounded-full"></span>
+                                진척 단계(Stage) 매핑 기준
+                            </h4>
+                            <div class="overflow-hidden rounded-[2rem] border border-slate-200 shadow-sm">
+                                <table class="w-full text-left text-sm">
+                                    <thead class="bg-slate-50 text-slate-500 uppercase font-bold text-[10px] tracking-wider">
+                                        <tr>
+                                            <th class="px-8 py-5">단계명</th>
+                                            <th class="px-8 py-5">진척도 (%)</th>
+                                            <th class="px-8 py-5">주요 정의</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 text-slate-600">
+                                        <tr class="hover:bg-slate-50/50 transition-colors">
+                                            <td class="px-8 py-5 font-bold text-slate-900">기획중</td>
+                                            <td class="px-8 py-5">0% ~ 19%</td>
+                                            <td class="px-8 py-5">아이디어 제안 및 기초 타당성 검토</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/50 transition-colors">
+                                            <td class="px-8 py-5 font-bold text-slate-900">기획</td>
+                                            <td class="px-8 py-5">20% ~ 39%</td>
+                                            <td class="px-8 py-5">상세 요건 정의 및 프로세스 설계</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/50 transition-colors">
+                                            <td class="px-8 py-5 font-bold text-slate-900">계획수립</td>
+                                            <td class="px-8 py-5">40% ~ 59%</td>
+                                            <td class="px-8 py-5">개발 계획 수립 및 아키텍처 확정</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/50 transition-colors">
+                                            <td class="px-8 py-5 font-bold text-slate-900">기능구현</td>
+                                            <td class="px-8 py-5">60% ~ 79%</td>
+                                            <td class="px-8 py-5">실제 시스템 개발 및 단위 테스트</td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/50 transition-colors">
+                                            <td class="px-8 py-5 font-bold text-slate-900">현업검증</td>
+                                            <td class="px-8 py-5">80% ~ 99%</td>
+                                            <td class="px-8 py-5">사용자 수용 테스트(UAT) 및 피드백 반영</td>
+                                        </tr>
+                                        <tr class="bg-blue-50/30">
+                                            <td class="px-8 py-5 font-bold text-blue-600">개발완료</td>
+                                            <td class="px-8 py-5 font-bold text-blue-600">100%</td>
+                                            <td class="px-8 py-5 text-blue-600 font-medium">최종 배포 및 운영 이관 완료</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                        <section>
+                            <h4 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                <span class="w-2 h-7 bg-orange-500 rounded-full"></span>
+                                핵심 지표 (KPI) 산출
+                            </h4>
+                            <div class="p-8 bg-sky-50/30 border border-sky-100 rounded-[2.5rem] grid grid-cols-2 gap-8">
+                                <div class="space-y-4">
+                                    <h5 class="font-bold text-slate-900 flex items-center gap-2">
+                                        <i data-lucide="calculator" class="w-5 h-5 text-orange-500"></i> 진척률 산출식
+                                    </h5>
+                                    <div class="p-5 bg-white border border-sky-100 rounded-2xl font-mono text-sm text-sky-700 shadow-sm text-center">
+                                        Σ(과제별 진척도) / 전체 과제수
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 text-center">※ 전주 대비 증감(%p)을 통해 실시간 변화량을 추적합니다.</p>
+                                </div>
+                                <div class="space-y-4">
+                                    <h5 class="font-bold text-slate-900 flex items-center gap-2">
+                                        <i data-lucide="clock" class="w-5 h-5 text-orange-500"></i> ROI 산출 기준
+                                    </h5>
+                                    <div class="p-5 bg-white border border-sky-100 rounded-2xl font-mono text-sm text-sky-700 shadow-sm text-center">
+                                        (수행 전 시간 - 후 시간) × 연간 빈도
+                                    </div>
+                                    <p class="text-[10px] text-slate-500 text-center">※ 연간 누적 절감 시간(h/yr)으로 경제적 가치를 측정합니다.</p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- Glossary Content -->
+                    <div id="manual-panel-glossary" class="manual-panel hidden space-y-6">
+                        <h4 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                            <span class="w-2 h-7 bg-purple-500 rounded-full"></span>
+                            주요 리포트 용어 해설
+                        </h4>
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="p-6 bg-white border border-slate-100 rounded-2xl flex items-center gap-6 hover:bg-sky-50/30 hover:border-sky-200 transition-all shadow-sm">
+                                <div class="w-32 px-4 py-2 bg-slate-50 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 text-center shrink-0">Stack</div>
+                                <p class="text-sm text-slate-600">AI 프로젝트 개발에 사용된 주요 프로그래밍 언어 (Python, Java 등)</p>
+                            </div>
+                            <div class="p-6 bg-white border border-slate-100 rounded-2xl flex items-center gap-6 hover:bg-sky-50/30 hover:border-sky-200 transition-all shadow-sm">
+                                <div class="w-32 px-4 py-2 bg-slate-50 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 text-center shrink-0">개발 Tool</div>
+                                <p class="text-sm text-slate-600">구현에 활용된 도구 및 모델 (Gemini Pro, GPT-4o, Cursor 등)</p>
+                            </div>
+                            <div class="p-6 bg-white border border-slate-100 rounded-2xl flex items-center gap-6 hover:bg-sky-50/30 hover:border-sky-200 transition-all shadow-sm">
+                                <div class="w-32 px-4 py-2 bg-slate-50 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 text-center shrink-0">WID</div>
+                                <p class="text-sm text-slate-600">Weekly ID의 약자. 2026년 19주차 데이터인 경우 W19로 표기</p>
+                            </div>
+                            <div class="p-6 bg-white border border-slate-100 rounded-2xl flex items-center gap-6 hover:bg-sky-50/30 hover:border-sky-200 transition-all shadow-sm">
+                                <div class="w-32 px-4 py-2 bg-slate-50 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 text-center shrink-0">RAG</div>
+                                <p class="text-sm text-slate-600">검색 증강 생성. 사내 문서를 기반으로 정확한 답변을 생성하는 AI 기술</p>
+                            </div>
+                            <div class="p-6 bg-white border border-slate-100 rounded-2xl flex items-center gap-6 hover:bg-sky-50/30 hover:border-sky-200 transition-all shadow-sm">
+                                <div class="w-32 px-4 py-2 bg-slate-50 text-slate-700 text-xs font-bold rounded-xl border border-slate-200 text-center shrink-0">Security Score</div>
+                                <p class="text-sm text-slate-600">소스코드 자가진단 및 보안 수칙 준수 여부를 합산한 점수</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-6 border-t border-slate-100 bg-slate-50 flex justify-center shrink-0">
+                <button onclick="closeUserManual()" class="px-12 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-blue-200">확인하였습니다</button>
             </div>
         </div>
     </div>
@@ -758,6 +975,39 @@
                     await batch.commit();
                 } catch (e) { console.error("Tasks Save Error:", e); }
             },
+            async deleteWeeklyTaskData(wid) {
+                // 1. LocalStorage 삭제
+                try {
+                    const allWeeklyData = JSON.parse(localStorage.getItem('ax_weekly_tasks') || '{}');
+                    if (allWeeklyData[wid]) {
+                        delete allWeeklyData[wid];
+                        localStorage.setItem('ax_weekly_tasks', JSON.stringify(allWeeklyData));
+                    }
+                    
+                    let availableWids = JSON.parse(localStorage.getItem('ax_available_wids') || '[]');
+                    if (availableWids.includes(wid)) {
+                        availableWids = availableWids.filter(w => w !== wid);
+                        localStorage.setItem('ax_available_wids', JSON.stringify(availableWids));
+                    }
+                    
+                    if (localStorage.getItem('ax_selected_wid') === wid) {
+                        localStorage.removeItem('ax_selected_wid');
+                    }
+                } catch (e) { console.error("LocalStorage Delete Error:", e); }
+
+                if (!isFirebaseActive) return;
+                
+                // 2. Firebase 데이터 삭제
+                try {
+                    const existingDocs = await db.collection('tasks').where('wid', '==', wid).get();
+                    if (!existingDocs.empty) {
+                        const deleteBatch = db.batch();
+                        existingDocs.forEach(doc => deleteBatch.delete(doc.ref));
+                        await deleteBatch.commit();
+                        console.log(`🔥 [Firebase] ${wid} tasks deleted.`);
+                    }
+                } catch (e) { console.error("Firebase Weekly Delete Error:", e); }
+            },
 
             async getAvailableWids() {
                 let wids = [];
@@ -1021,46 +1271,37 @@
         }
 
         // Project Data for Task Tracker (Updated for Report View)
-        const DEFAULT_TASK_DATA = [
-            { 부서명: '경영지원팀', 담당자: '담당자 A', 과제명: '연차메일 발송', 단계: '완료', 진척도: '100%', 진척도_이전: '80%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '경영지원팀', 담당자: '담당자 A', 과제명: '보험금액', 단계: '완료', 진척도: '100%', 진척도_이전: '80%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '경영지원팀', 담당자: '담당자 A', 과제명: '인사월보', 단계: '완료', 진척도: '100%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '경영지원팀', 담당자: '담당자 B', 과제명: '사내규정', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '해외지원팀', 담당자: '담당자 C', 과제명: '내국물품반출목록신고', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '해외지원팀', 담당자: '담당자 D', 과제명: '출하인보이스 작성', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '해외지원팀', 담당자: '담당자 D', 과제명: '인보이스 오류검출', 단계: '완료', 진척도: '100%', 진척도_이전: '80%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '해외지원팀', 담당자: '담당자 E', 과제명: '원가분석', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '영업1팀', 담당자: '담당자 F', 과제명: '고객사FCST', 단계: '완료', 진척도: '100%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '영업1팀', 담당자: '담당자 F', 과제명: 'RVC율', 단계: '완료', 진척도: '100%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '영업1팀', 담당자: '담당자 G', 과제명: '자재과부족', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '영업1팀', 담당자: '담당자 H', 과제명: '고객사 판매수량정보', 단계: '완료', 진척도: '100%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '재무팀', 담당자: '담당자 I', 과제명: '환율정보', 단계: '완료', 진척도: '100%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '재무팀', 담당자: '담당자 I', 과제명: '시산표', 단계: '검증', 진척도: '60%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: '', 완료: '' },
-            { 부서명: '재무팀', 담당자: '담당자 I', 과제명: '재무제표', 단계: '검증', 진척도: '60%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: '', 완료: '' },
-            { 부서명: '개발1팀', 담당자: '담당자 Q', 과제명: 'Bom 전환 및 부품실장도 작성', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '제조', 담당자: '담당자 J', 과제명: 'SAMPLE생산계획', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '제조', 담당자: '담당자 J', 과제명: 'SAMPLE자재발주', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: 'TSP', 담당자: '담당자 K', 과제명: '생산계획', 단계: '검증', 진척도: '60%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: '', 완료: '' },
-            { 부서명: 'TSP', 담당자: '담당자 K', 과제명: '자재발주', 단계: '구현방안확정', 진척도: '20%', 진척도_이전: '20%', 구현방안확정: 'O', 테스트중: '', 검증: '', 현업파일럿: '', 완료: '' },
-            { 부서명: 'TSP', 담당자: '담당자 K', 과제명: '불량개선', 단계: '구현방안확정', 진척도: '20%', 진척도_이전: '20%', 구현방안확정: 'O', 테스트중: '', 검증: '', 현업파일럿: '', 완료: '' },
-            { 부서명: '내작 SMT', 담당자: '담당자 L', 과제명: '개발샘플출하계획표', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '내작 SMT', 담당자: '담당자 L', 과제명: '생산프로그램', 단계: '완료', 진척도: '100%', 진척도_이전: '80%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '제조기술팀', 담당자: '담당자 M', 과제명: '불량분석 & 모니터링', 단계: '완료', 진척도: '100%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '제조기술팀', 담당자: '담당자 M', 과제명: '제조공정도', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '제조기술팀', 담당자: '담당자 M', 과제명: '작업지도서', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '80%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '품질팀', 담당자: '담당자 N', 과제명: 'KPI지표', 단계: '완료', 진척도: '100%', 진척도_이전: '80%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '구매팀', 담당자: '담당자 O', 과제명: '자재소요량 전달', 단계: '검증', 진척도: '60%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: '', 완료: '' },
-            { 부서명: '구매팀', 담당자: '담당자 O', 과제명: '부자재발주자동화', 단계: '완료', 진척도: '100%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '구매팀', 담당자: '담당자 O', 과제명: '매입 부품 관리', 단계: '현업파일럿', 진척도: '80%', 진척도_이전: '60%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: '' },
-            { 부서명: '자동화팀', 담당자: '담당자 P', 과제명: '치공구/검사기 발주', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '자동화팀', 담당자: '담당자 P', 과제명: '견적서 및 품의서', 단계: '완료', 진척도: '100%', 진척도_이전: '100%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' },
-            { 부서명: '자동화팀', 담당자: '담당자 P', 과제명: '출하LIST 및 확인서', 단계: '완료', 진척도: '100%', 진척도_이전: '40%', 구현방안확정: 'O', 테스트중: 'O', 검증: 'O', 현업파일럿: 'O', 완료: 'O' }
-        ];
+        const DEFAULT_TASK_DATA = [];
 
-        let reportTitle = localStorage.getItem('ax_report_title') || "W18(2주차) 주간 Feedback Report";
-        let taskData = JSON.parse(localStorage.getItem('ax_task_data')) || DEFAULT_TASK_DATA;
+        let reportTitle = localStorage.getItem('ax_report_title') || "과제 진척 리포트";
+        let taskData = JSON.parse(localStorage.getItem('ax_task_data')) || [];
         let availableWids = JSON.parse(localStorage.getItem('ax_available_wids')) || [];
-        let selectedWid = localStorage.getItem('ax_selected_wid') || "";
+        let selectedWids = JSON.parse(localStorage.getItem('ax_selected_wids')) || [];
+        let selectedWid = selectedWids.length > 0 ? selectedWids[0] : "";
+        
+        // 초기화 로직: 더미 데이터(Default, W-19 등) 및 경영지원팀 샘플 클리어
+        let allWeeklyData = JSON.parse(localStorage.getItem('ax_weekly_tasks') || '{}');
+        let needsReset = false;
+        
+        // 특정 더미 주차 삭제
+        if (allWeeklyData['Default']) { delete allWeeklyData['Default']; needsReset = true; }
+        if (allWeeklyData['W-19']) { delete allWeeklyData['W-19']; needsReset = true; }
+        if (allWeeklyData['Default']) { delete allWeeklyData['Default']; needsReset = true; }
+        
+        if (taskData.length > 0 && taskData[0].부서명 === '경영지원팀') {
+            needsReset = true;
+            taskData = [];
+        }
+
+        if (needsReset) {
+            console.log("Cleaning up unwanted data (Default, W-19, Dummy)...");
+            localStorage.setItem('ax_weekly_tasks', JSON.stringify(allWeeklyData));
+            localStorage.removeItem('ax_task_data');
+            localStorage.removeItem('ax_available_wids');
+            localStorage.removeItem('ax_selected_wid');
+            availableWids = availableWids.filter(w => w !== 'Default' && w !== 'W-19');
+            selectedWid = availableWids.length > 0 ? availableWids[0] : "";
+        }
         let currentTop5Mode = 'best'; // 'best' or 'worst'
 
         function switchTop5Mode(mode) {
@@ -1111,47 +1352,71 @@
         function saveTaskData() {
             localStorage.setItem('ax_task_data', JSON.stringify(taskData));
             localStorage.setItem('ax_report_title', reportTitle);
-            localStorage.setItem('ax_selected_wid', selectedWid);
+            localStorage.setItem('ax_selected_wids', JSON.stringify(selectedWids));
         }
 
         async function updateAvailableWids() {
-            availableWids = await FirebaseManager.getAvailableWids();
+            const rawWids = await FirebaseManager.getAvailableWids();
+            availableWids = rawWids.filter(w => w && w !== 'Default' && w !== 'W-19' && w !== 'undefined');
             localStorage.setItem('ax_available_wids', JSON.stringify(availableWids));
-            if (!selectedWid && availableWids.length > 0) {
-                selectedWid = availableWids[0];
+            
+            // 기본 선택: 최근 2개 주차
+            if (selectedWids.length === 0) {
+                if (availableWids.length >= 2) {
+                    selectedWids = [availableWids[0], availableWids[1]];
+                } else if (availableWids.length === 1) {
+                    selectedWids = [availableWids[0]];
+                }
+                selectedWid = selectedWids[0] || "";
+                localStorage.setItem('ax_selected_wids', JSON.stringify(selectedWids));
             }
+        }
+
+        function toggleWidDropdown() {
+            const dropdown = document.getElementById('wid-dropdown-content');
+            if (dropdown) dropdown.classList.toggle('hidden');
         }
 
         async function switchWid(wid) {
             if (!wid) return;
-            selectedWid = wid;
-            localStorage.setItem('ax_selected_wid', wid);
-            showToast(`${wid} 주차 데이터를 불러오는 중...`, 'info');
             
-            // 1. 현재 선택한 주차 데이터 로드
-            const currentTasks = await FirebaseManager.getTaskDataByWid(wid);
+            // Toggle selection logic
+            const index = selectedWids.indexOf(wid);
+            if (index > -1) {
+                if (selectedWids.length > 1) {
+                    selectedWids.splice(index, 1);
+                } else {
+                    showToast("최소 한 개의 주차는 선택되어야 합니다.", "warning");
+                    return;
+                }
+            } else {
+                selectedWids.push(wid);
+                // 명확한 비교를 위해 최대 3~4개 정도로 제한할 수 있으나 일단 자유롭게 허용
+            }
             
-            // 2. 이전 주차 데이터 로드 (비교용)
-            const sortedWids = [...availableWids].sort((a, b) => b.localeCompare(a));
-            const currentIndex = sortedWids.indexOf(wid);
+            selectedWids.sort((a, b) => b.localeCompare(a));
+            selectedWid = selectedWids[0];
+            localStorage.setItem('ax_selected_wids', JSON.stringify(selectedWids));
+            showToast("비교 데이터를 업데이트 중입니다...", 'info');
+            
+            const currentWid = selectedWids[0];
+            const prevWid = selectedWids[1] || "";
+            
+            const currentTasks = await FirebaseManager.getTaskDataByWid(currentWid);
             let prevTasks = [];
-            if (currentIndex < sortedWids.length - 1) {
-                const prevWid = sortedWids[currentIndex + 1];
+            if (prevWid) {
                 prevTasks = await FirebaseManager.getTaskDataByWid(prevWid);
             }
-
-            // 3. 데이터 매칭 및 Diff 계산
+            
             taskData = currentTasks.map(t => {
                 const prevTask = prevTasks.find(pt => pt.과제명 === t.과제명 && pt.부서명 === t.부서명);
                 const prevProgress = prevTask ? (parseInt(prevTask.진척도) || 0) : (parseInt(t.진척도_이전) || 0);
-                return {
-                    ...t,
-                    진척도_이전: prevProgress + '%'
-                };
+                return { ...t, 진척도_이전: prevProgress + '%' };
             });
-
+            
             saveTaskData();
             renderTasks();
+            if (window.lucide) window.lucide.createIcons();
         }
 
         // Security Review Rules - Expanded
@@ -1317,7 +1582,7 @@
                                 <div class="p-5 bg-slate-800/30 hover:bg-slate-800/50 border border-slate-700/50 rounded-2xl flex items-center justify-between group cursor-pointer transition-all">
                                     <div class="flex items-center gap-4">
                                         <span class="px-3 py-1 bg-${item.color}-500/10 text-${item.color}-400 text-[10px] font-bold rounded-lg border border-${item.color}-500/20">${item.tag}</span>
-                                        <h5 class="text-slate-200 font-medium group-hover:text-primary transition-colors">${item.title}</h5>
+                                        <h5 class="text-primary font-bold group-hover:opacity-80 transition-all">${item.title}</h5>
                                     </div>
                                     <div class="flex items-center gap-6 text-xs text-slate-500">
                                         <span>${item.author}</span>
@@ -1609,6 +1874,45 @@
             lucide.createIcons();
         }
 
+        function openUserManual() {
+            const modal = document.getElementById('user-manual-modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                switchManualTab('features');
+                if (window.lucide) window.lucide.createIcons();
+            }
+        }
+
+        function closeUserManual() {
+            const modal = document.getElementById('user-manual-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
+        }
+
+        function switchManualTab(tabId) {
+            // Hide all panels
+            document.querySelectorAll('.manual-panel').forEach(p => p.classList.add('hidden'));
+            // Show target panel
+            const targetPanel = document.getElementById(`manual-panel-${tabId}`);
+            if (targetPanel) targetPanel.classList.remove('hidden');
+
+            // Reset tab buttons
+            document.querySelectorAll('.manual-tab-btn').forEach(btn => {
+                btn.classList.remove('active-tab', 'bg-blue-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+            });
+            // Highlight active button
+            const activeBtn = document.getElementById(`manual-tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active-tab', 'bg-blue-600', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+            }
+            if (window.lucide) window.lucide.createIcons();
+        }
+
         function renderTasks() {
             const container = document.getElementById('page-container');
             container.innerHTML = '';
@@ -1617,25 +1921,33 @@
             const cleanData = taskData.map((t, idx) => {
                 const cur = parseFloat(t.진척도) || 0;
                 const prev = parseFloat(t.진척도_이전) || 0;
-                const stage = t.단계 || (cur === 100 ? '완료' : cur >= 80 ? '현업파일럿' : cur >= 60 ? '검증' : cur >= 20 ? '구현방안확정' : '계획');
+                // 동양이엔피 진척도 매핑 로직
+                const mapStage = (v) => {
+                    if (v >= 100) return '개발완료';
+                    if (v >= 80) return '현업검증';
+                    if (v >= 60) return '기능구현';
+                    if (v >= 40) return '계획수립';
+                    if (v >= 20) return '기획';
+                    return '기획중';
+                };
+                const stage = t.단계 || mapStage(cur);
                 let displayManager = t.담당자 || '담당자';
                 return { ...t, cur, prev, diff: cur - prev, stage, displayManager };
             });
 
             const totalTasks = cleanData.length;
-            const completedTasks = cleanData.filter(t => t.stage === '완료').length;
-            const verificationTasks = cleanData.filter(t => t.stage === '검증' || t.stage === '현업파일럿').length;
-            const devTestTasks = cleanData.filter(t => t.stage === '개발/테스트').length;
-            const confirmedTasks = cleanData.filter(t => t.stage === '구현방안확정').length;
+            const completedTasks = cleanData.filter(t => t.stage === '개발완료').length;
+            const stage4Tasks = cleanData.filter(t => t.stage === '현업검증').length;
+            const stage3Tasks = cleanData.filter(t => t.stage === '기능구현').length;
+            const confirmedTasks = cleanData.filter(t => t.stage === '기획' || t.stage === '계획수립' || t.stage === '기획중').length;
 
             const avgProgress = totalTasks > 0 ? (cleanData.reduce((acc, curr) => acc + curr.cur, 0) / totalTasks).toFixed(1) : 0;
             const prevAvgProgress = totalTasks > 0 ? (cleanData.reduce((acc, curr) => acc + curr.prev, 0) / totalTasks).toFixed(1) : 0;
             const progressDiff = (parseFloat(avgProgress) - parseFloat(prevAvgProgress)).toFixed(1);
 
             const sortedWids = [...availableWids].sort((a, b) => b.localeCompare(a));
-            const currentIndex = sortedWids.indexOf(selectedWid);
-            const prevLabel = (currentIndex < sortedWids.length - 1 && currentIndex !== -1) ? sortedWids[currentIndex + 1] : "이전 주차";
-            const currentLabel = selectedWid || "현재 주차";
+            const currentLabel = selectedWids[0] || "현재 주차";
+            const prevLabel = selectedWids[1] || "이전 주차";
 
             const wrapper = document.createElement('div');
             wrapper.className = 'space-y-8 animate-fade-in pb-20';
@@ -1645,10 +1957,21 @@
                     <div class="flex flex-col gap-2">
                         <div class="flex items-center gap-3">
                             <h3 class="text-3xl font-bold">${reportTitle}</h3>
-                            <select onchange="switchWid(this.value)" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-1.5 text-xs font-bold text-primary focus:outline-none focus:border-primary cursor-pointer">
-                                <option value="">주차 선택</option>
-                                ${availableWids.map(w => `<option value="${w}" ${w === selectedWid ? 'selected' : ''}>${w}</option>`).join('')}
-                            </select>
+                            <div class="relative" id="wid-selector-container">
+                                <button onclick="event.stopPropagation(); toggleWidDropdown()" class="bg-slate-800 border border-slate-700 rounded-xl px-4 py-2 text-xs font-bold text-primary flex items-center gap-2 hover:border-primary transition-all shadow-lg">
+                                    <i data-lucide="check-square" class="w-4 h-4"></i>
+                                    비교 주차 선택
+                                    <i data-lucide="chevron-down" class="w-3 h-3 ml-1 opacity-50"></i>
+                                </button>
+                                <div id="wid-dropdown-content" class="absolute left-0 mt-2 w-48 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl hidden z-50 overflow-hidden">
+                                    ${availableWids.map(w => `
+                                        <button onclick="event.stopPropagation(); switchWid('${w}')" class="w-full px-4 py-3 text-left hover:bg-slate-700 text-xs font-bold ${selectedWids.includes(w) ? 'text-primary bg-primary/10' : 'text-slate-400'} flex items-center gap-3 transition-colors">
+                                            <i data-lucide="${selectedWids.includes(w) ? 'check-square' : 'square'}" class="w-4 h-4"></i>
+                                            ${w}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
                         </div>
                         <p class="text-textSecondary text-sm">전사 AX 과제 이행 현황 및 주간 지표 분석 리포트</p>
                     </div>
@@ -1671,6 +1994,9 @@
                                 </button>
                             </div>
                         </div>
+                        <button onclick="openUserManual()" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-800 border border-slate-700 text-slate-400 hover:text-primary hover:border-primary transition-all shadow-lg self-center" title="Report Guide" data-pdf-exclude>
+                            <i data-lucide="help-circle" class="w-5 h-5"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -1693,7 +2019,7 @@
                     </div>
                     <div class="glass p-8 rounded-[2rem] border-b-4 border-[#9f7aea]">
                         <div class="flex justify-between items-start mb-2">
-                            <p class="text-[18px] text-blue-500 font-bold uppercase tracking-tight">완료</p>
+                            <p class="text-[18px] text-blue-500 font-bold uppercase tracking-tight">개발완료</p>
                             <div class="p-2 bg-purple-500/10 rounded-xl text-purple-500">
                                 <i data-lucide="check-circle" class="w-6 h-6"></i>
                             </div>
@@ -1705,27 +2031,27 @@
                     </div>
                     <div class="glass p-8 rounded-[2rem] border-b-4 border-[#4299e1]">
                         <div class="flex justify-between items-start mb-2">
-                            <p class="text-[18px] text-blue-500 font-bold uppercase tracking-tight">검증 & 파일럿</p>
+                            <p class="text-[18px] text-blue-500 font-bold uppercase tracking-tight">현업검증</p>
                             <div class="p-2 bg-blue-500/10 rounded-xl text-blue-500">
                                 <i data-lucide="search" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="flex items-baseline gap-2">
-                            <h4 class="text-[18px] font-bold">${verificationTasks}건</h4>
+                            <h4 class="text-[18px] font-bold">${stage4Tasks}건</h4>
                         </div>
-                        <p class="text-[13px] text-slate-600 mt-2 font-bold">전체 ${totalTasks}개 과제 중 ${totalTasks > 0 ? Math.round(verificationTasks/totalTasks*100) : 0}%</p>
+                        <p class="text-[13px] text-slate-600 mt-2 font-bold">전체 ${totalTasks}개 과제 중 ${totalTasks > 0 ? Math.round(stage4Tasks/totalTasks*100) : 0}%</p>
                     </div>
                     <div class="glass p-8 rounded-[2rem] border-b-4 border-[#60a5fa]">
                         <div class="flex justify-between items-start mb-2">
-                            <p class="text-[18px] text-blue-500 font-bold uppercase tracking-tight">개발/테스트</p>
+                            <p class="text-[18px] text-blue-500 font-bold uppercase tracking-tight">기능구현</p>
                             <div class="p-2 bg-indigo-500/10 rounded-xl text-indigo-500">
                                 <i data-lucide="code" class="w-6 h-6"></i>
                             </div>
                         </div>
                         <div class="flex items-baseline gap-2">
-                            <h4 class="text-[18px] font-bold">${devTestTasks}건</h4>
+                            <h4 class="text-[18px] font-bold">${stage3Tasks}건</h4>
                         </div>
-                        <p class="text-[13px] text-slate-600 mt-2 font-bold">전체 ${totalTasks}개 과제 중 ${totalTasks > 0 ? Math.round(devTestTasks/totalTasks*100) : 0}%</p>
+                        <p class="text-[13px] text-slate-600 mt-2 font-bold">전체 ${totalTasks}개 과제 중 ${totalTasks > 0 ? Math.round(stage3Tasks/totalTasks*100) : 0}%</p>
                     </div>
                 </div>
 
@@ -1734,10 +2060,13 @@
                     <div class="glass p-8 rounded-[2.5rem] border border-slate-800">
                         <h5 class="text-[20px] font-bold mb-6 flex items-center gap-2">
                             <i data-lucide="bar-chart-2" class="w-5 h-5 text-primary"></i>
-                            진척률 비교 (${prevLabel} vs ${currentLabel})
+                            주간 진척 비교
                         </h5>
-                        <div class="h-72">
+                        <div class="h-72 relative">
                             <canvas id="progressComparisonChart"></canvas>
+                        </div>
+                        <div class="flex justify-end mt-4">
+                            <p class="text-[12px] text-slate-500 font-normal">* 해당 단계 완료 기준 (예, '기획'은 기획 완료 과제 수)</p>
                         </div>
                     </div>
                     <div class="glass p-8 rounded-[2.5rem] border border-slate-800">
@@ -1756,7 +2085,7 @@
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
                         <h5 class="text-[20px] font-bold flex items-center gap-2">
                             <i data-lucide="award" class="w-5 h-5 text-yellow-500"></i>
-                            ${currentTop5Mode === 'best' ? '전주 비 진척율 우수 5' : '평균비 진척율 저조 5'}
+                            ${currentTop5Mode === 'best' ? `진척율 우수 5 (${prevLabel} vs ${currentLabel})` : '평균비 진척율 저조 5'}
                         </h5>
                         <div class="flex bg-slate-900/50 p-1 rounded-xl border border-slate-800">
                             <button onclick="switchTop5Mode('best')" class="px-4 py-2 rounded-lg text-[12px] font-bold transition-all ${currentTop5Mode === 'best' ? 'bg-primary text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}">
@@ -1879,15 +2208,24 @@
                 const cur = t.cur || parseFloat(t.진척도) || 0;
                 const prev = t.prev || parseFloat(t.진척도_이전) || 0;
                 const diff = cur - prev;
-                const stage = t.stage || (cur === 100 ? '완료' : cur >= 80 ? '현업파일럿' : cur >= 60 ? '검증' : cur >= 20 ? '구현방안확정' : '계획');
+                
+                const mapStage = (v) => {
+                    if (v >= 100) return '개발완료';
+                    if (v >= 80) return '현업검증';
+                    if (v >= 60) return '기능구현';
+                    if (v >= 40) return '계획수립';
+                    if (v >= 20) return '기획';
+                    return '기획중';
+                };
+                const stage = t.stage || mapStage(cur);
                 const displayManager = t.담당자 || '담당자';
                 
                 let stageClass = 'bg-slate-800 text-slate-400';
-                if (stage === '완료') stageClass = 'bg-green-100 text-green-700 font-bold';
-                else if (stage === '현업파일럿') stageClass = 'bg-purple-100 text-purple-700 font-bold';
-                else if (stage === '검증') stageClass = 'bg-blue-100 text-blue-700 font-bold';
-                else if (stage === '개발/테스트' || stage === '테스트') stageClass = 'bg-indigo-100 text-indigo-700 font-bold';
-                else if (stage === '구현방안확정') stageClass = 'bg-orange-100 text-orange-700 font-bold';
+                if (stage === '개발완료') stageClass = 'bg-green-100 text-green-700 font-bold';
+                else if (stage === '현업검증') stageClass = 'bg-purple-100 text-purple-700 font-bold';
+                else if (stage === '기능구현') stageClass = 'bg-blue-100 text-blue-700 font-bold';
+                else if (stage === '계획수립') stageClass = 'bg-indigo-100 text-indigo-700 font-bold';
+                else if (stage === '기획') stageClass = 'bg-orange-100 text-orange-700 font-bold';
 
                 return `
                     <tr class="hover:bg-slate-800/30 transition-colors group task-row border-b border-slate-800/50 whitespace-nowrap" 
@@ -1999,6 +2337,13 @@
             if (!event.target.closest('.filter-dropdown')) {
                 document.querySelectorAll('.filter-dropdown-content').forEach(el => el.classList.remove('show'));
                 document.querySelectorAll('[id^="apply-btn-container-"]').forEach(el => el.classList.add('hidden'));
+            }
+            if (!event.target.closest('#wid-selector-container')) {
+                const widDropdown = document.getElementById('wid-dropdown-content');
+                if (widDropdown) widDropdown.classList.add('hidden');
+            }
+            if (event.target === document.getElementById('user-manual-modal')) {
+                closeUserManual();
             }
         }
 
@@ -2203,10 +2548,10 @@
                         '담당자': t.담당자 || '',
                         '과제명': t.과제명 || '',
                         '완료예정일정': excelDateToJS(expectedDate),
-                        '구현방안확정': isPlaceholder(t.구현방안확정) ? '' : (t.구현방안확정 || ''),
-                        '테스트중': isPlaceholder(t.테스트중) ? '' : (t.테스트중 || ''),
-                        '검증': isPlaceholder(t.검증) ? '' : (t.검증 || ''),
-                        '현업파일럿': isPlaceholder(t.현업파일럿) ? '' : (t.현업파일럿 || ''),
+                        '기획': isPlaceholder(t.기획) ? '' : (t.기획 || ''),
+                        '계획수립': isPlaceholder(t.계획수립) ? '' : (t.계획수립 || ''),
+                        '기능구현': isPlaceholder(t.기능구현) ? '' : (t.기능구현 || ''),
+                        '현업검증': isPlaceholder(t.현업검증) ? '' : (t.현업검증 || ''),
                         '완료': isPlaceholder(t.완료) ? '' : (t.완료 || ''),
                         '단계': t.단계 || '',
                         '진척도': t.진척도 || '',
@@ -2351,46 +2696,65 @@
                 }
             };
 
-            // 1. Progress Comparison Chart (Dynamic)
-            const stagesForComp = ['구현방안확정', '개발/테스트', '검증', '현업파일럿', '완료'];
-            // Use same cleaning logic for consistency
-            const chartCleanData = taskData.map(t => {
-                const cur = parseInt(t.진척도) || 0;
-                const prev = parseInt(t.진척도_이전) || 0;
-                const mapStage = (v) => (v === 100 ? '완료' : v >= 80 ? '현업파일럿' : v >= 60 ? '검증' : v >= 40 ? '개발/테스트' : v >= 20 ? '구현방안확정' : '계획');
-                const curStage = t.단계 === '테스트' ? '개발/테스트' : (t.단계 || mapStage(cur));
-                const prevStage = mapStage(prev);
-                return { curStage, prevStage };
-            });
-
-            const compDataCurrent = stagesForComp.map(s => chartCleanData.filter(t => t.curStage === s).length);
-            const compDataPrev = stagesForComp.map(s => chartCleanData.filter(t => t.prevStage === s).length);
+            // 1. Progress Comparison Chart (Dynamic Multi-dataset)
+            const stagesForComp = ['기획중', '기획', '계획수립', '기능구현', '현업검증', '개발완료'];
+            
+            const generateDatasets = async () => {
+                const datasets = [];
+                const highlightColor = '#7c3aed'; // 최신 주차 강조 색상
+                const pastColor = 'rgba(148, 163, 184, 0.3)'; // 과거 주차 회색 톤
+                
+                // 과거 주차부터 표시하기 위해 오름차순 정렬
+                const sortedSelectedWids = [...selectedWids].sort((a, b) => a.localeCompare(b));
+                
+                for (let i = 0; i < sortedSelectedWids.length; i++) {
+                    const wid = sortedSelectedWids[i];
+                    const isLast = i === sortedSelectedWids.length - 1;
+                    const widTasks = await FirebaseManager.getTaskDataByWid(wid);
+                    
+                    const stageCounts = stagesForComp.map(s => {
+                        return widTasks.filter(t => {
+                            const cur = parseInt(t.진척도) || 0;
+                            const mapStage = (v) => {
+                                if (v >= 100) return '개발완료';
+                                if (v >= 80) return '현업검증';
+                                if (v >= 60) return '기능구현';
+                                if (v >= 40) return '계획수립';
+                                if (v >= 20) return '기획';
+                                return '기획중';
+                            };
+                            const stage = t.단계 || mapStage(cur);
+                            return stage === s;
+                        }).length;
+                    });
+                    
+                    datasets.push({
+                        label: wid,
+                        data: stageCounts,
+                        backgroundColor: isLast ? highlightColor : pastColor,
+                        borderRadius: 8,
+                        datalabels: { 
+                            align: 'center', 
+                            anchor: 'center', 
+                            color: isLast ? '#FFFFFF' : '#64748b' 
+                        }
+                    });
+                }
+                return datasets;
+            };
 
             const comparisonCanvas = document.getElementById('progressComparisonChart');
             if (comparisonCanvas) {
                 const comparisonCtx = comparisonCanvas.getContext('2d');
-                new Chart(comparisonCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: stagesForComp,
-                        datasets: [
-                            { 
-                                label: prevLabel, 
-                                data: compDataPrev, 
-                                backgroundColor: 'rgba(148, 163, 184, 0.3)', 
-                                borderRadius: 8,
-                                datalabels: { align: 'center', anchor: 'center', color: '#475569' }
-                            },
-                            { 
-                                label: currentLabel, 
-                                data: compDataCurrent, 
-                                backgroundColor: '#7c3aed', 
-                                borderRadius: 8,
-                                datalabels: { align: 'center', anchor: 'center', color: '#FFFFFF' }
-                            }
-                        ]
-                    },
-                    options: chartOptions
+                generateDatasets().then(datasets => {
+                    new Chart(comparisonCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: stagesForComp,
+                            datasets: datasets
+                        },
+                        options: chartOptions
+                    });
                 });
             }
 
@@ -2399,19 +2763,28 @@
             // Use same cleaning logic for charts
             const processedData = taskData.map(t => {
                 const cur = parseInt(t.진척도) || 0;
-                const stage = t.단계 || (cur === 100 ? '완료' : cur >= 80 ? '현업파일럿' : cur >= 60 ? '검증' : cur >= 40 ? '개발/테스트' : cur >= 20 ? '구현방안확정' : '계획');
+                const mapStage = (v) => {
+                    if (v >= 100) return '개발완료';
+                    if (v >= 80) return '현업검증';
+                    if (v >= 60) return '기능구현';
+                    if (v >= 40) return '계획수립';
+                    if (v >= 20) return '기획';
+                    return '기획중';
+                };
+                const stage = t.단계 || mapStage(cur);
                 return { ...t, cur, stage };
             });
 
             processedData.forEach(item => {
                 const dept = item.부서명 || 'N/A';
-                const stage = item.stage === '테스트' ? '개발/테스트' : (item.stage || '계획');
+                const stage = item.stage;
                 
-                if (!deptStageData[dept]) deptStageData[dept] = { '구현방안확정': 0, '개발/테스트': 0, '검증': 0, '현업파일럿': 0, '완료': 0, '계획': 0 };
+                if (!deptStageData[dept]) deptStageData[dept] = { '기획중': 0, '기획': 0, '계획수립': 0, '기능구현': 0, '현업검증': 0, '개발완료': 0 };
                 if (deptStageData[dept][stage] !== undefined) {
                     deptStageData[dept][stage]++;
                 } else {
-                    deptStageData[dept]['계획']++;
+                    // Fallback to '기획중' if not matched
+                    deptStageData[dept]['기획중']++;
                 }
             });
             const deptLabels = Object.keys(deptStageData).sort();
@@ -2424,11 +2797,12 @@
                     data: {
                         labels: deptLabels,
                         datasets: [
-                            { label: '구현방안확정', data: deptLabels.map(d => deptStageData[d]['구현방안확정']), backgroundColor: '#ed8936', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
-                            { label: '개발/테스트', data: deptLabels.map(d => deptStageData[d]['개발/테스트']), backgroundColor: '#60a5fa', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
-                            { label: '검증', data: deptLabels.map(d => deptStageData[d]['검증']), backgroundColor: '#3b82f6', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
-                            { label: '현업파일럿', data: deptLabels.map(d => deptStageData[d]['현업파일럿']), backgroundColor: '#a78bfa', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
-                            { label: '완료', data: deptLabels.map(d => deptStageData[d]['완료']), backgroundColor: '#48bb78', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } }
+                            { label: '기획중', data: deptLabels.map(d => deptStageData[d]['기획중']), backgroundColor: '#cbd5e1', borderRadius: 4, stack: 'stack0', datalabels: { color: '#64748b', font: { size: 14 } } },
+                            { label: '기획', data: deptLabels.map(d => deptStageData[d]['기획']), backgroundColor: '#ed8936', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
+                            { label: '계획수립', data: deptLabels.map(d => deptStageData[d]['계획수립']), backgroundColor: '#60a5fa', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
+                            { label: '기능구현', data: deptLabels.map(d => deptStageData[d]['기능구현']), backgroundColor: '#3b82f6', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
+                            { label: '현업검증', data: deptLabels.map(d => deptStageData[d]['현업검증']), backgroundColor: '#a78bfa', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } },
+                            { label: '개발완료', data: deptLabels.map(d => deptStageData[d]['개발완료']), backgroundColor: '#48bb78', borderRadius: 4, stack: 'stack0', datalabels: { color: '#fff', font: { size: 14 } } }
                         ]
                     },
                     options: { 
@@ -2540,11 +2914,7 @@
                     // W-ID, WID 등 다양한 형태 지원
                     const wid = firstRow['W-ID'] || firstRow['WID'] || firstRow['wid'] || '';
                     
-                    if (wid) {
-                        reportTitle = `${wid} (${sheetName}) 과제 진척 리포트`;
-                    } else {
-                        reportTitle = `${sheetName} 과제 진척 리포트`;
-                    }
+                    reportTitle = `${wid || sheetName} 과제 진척 리포트`;
 
                     // Map Excel columns to taskData structure
                     let extractedWid = '';
@@ -2575,7 +2945,7 @@
                         const currentDept = getVal(['부서명', '부서', '팀명', '팀', '소속']);
                         if (currentDept) lastDept = currentDept;
                         
-                        const currentManager = getVal(['담당자', '담당', '담당자명', 'Owner', '성명']);
+                        const currentManager = getVal(['AI Scout', '담당자', '담당', '담당자명', 'Owner', '성명']);
                         if (currentManager) lastManager = currentManager;
 
                         const rowWid = String(getVal(['W-ID', 'WID', '주차', 'wid'])).trim();
@@ -2593,13 +2963,13 @@
                             cleanProgress = String(rawProgress).replace(/%/g, '').trim() || '0';
                         }
 
-                        const rawPrevProgress = getVal(['이전진척도', 'W17진척도', '이전주차진척도', '지난주진척', '진척도_이전']);
-                        let cleanPrevProgress = cleanProgress;
+                        const rawPrevProgress = getVal(['이전진척도', 'W17진척도', 'W18진척도', '이전주차진척도', '지난주진척', '진척도_이전']);
+                        let cleanPrevProgress = '';
                         if (rawPrevProgress !== '' && rawPrevProgress !== undefined) {
                             if (typeof rawPrevProgress === 'number') {
                                 cleanPrevProgress = (rawPrevProgress <= 1 ? Math.round(rawPrevProgress * 100) : rawPrevProgress).toString();
                             } else {
-                                cleanPrevProgress = String(rawPrevProgress).replace(/%/g, '').trim() || '0';
+                                cleanPrevProgress = String(rawPrevProgress).replace(/%/g, '').trim();
                             }
                         }
 
@@ -2620,25 +2990,26 @@
                         const isChecked = (val) => {
                             if (!val) return false;
                             const s = String(val).toUpperCase().trim();
-                            // 'O', 'V', '0', '1', 'TRUE' 등을 체크마크로 인식
-                            return s === 'O' || s === 'V' || s === '0' || s === '1' || s === 'TRUE';
+                            // 'O', 'V', '0', '1', 'TRUE', '완료', '진행', '기획', '계획' 등을 체크마크로 인식
+                            return s === 'O' || s === 'V' || s === '0' || s === '1' || s === 'TRUE' || s === '완료' || s === '진행' || s === '기획' || s === '계획' || s === 'CHECK';
                         };
 
                         // 단계 파싱 (O 표시 확인)
                         let detectedStage = getVal(['단계', '현단계', '상태', 'Status']);
                         if (!detectedStage) {
-                            // 각 단계별 키워드 강화 (파일롯/파일럿, 개발/테스트 등)
-                            const v5 = getVal(['완료', 'Stage5']);
-                            const v4 = getVal(['현업 파일럿', '현업 파일롯', '현업파일럿', '현업파일롯', 'Pilot', 'Stage4']);
-                            const v3 = getVal(['기능 검증', '기능검증', '검증', 'Stage3']);
-                            const v2 = getVal(['개발/테스트', '개발테스트', '테스트', 'Stage2']);
-                            const v1 = getVal(['구현방안확정', '구현방안', 'Stage1']);
+                            const v5 = getVal(['개발완료', '완료', 'Stage5']);
+                            const v4 = getVal(['현업검증', '현업 파일럿', 'Pilot', 'Stage4']);
+                            const v3 = getVal(['기능구현', '기능 구현', '기능검증', 'Stage3']);
+                            const v2 = getVal(['계획수립', '계획 수립', '개발/테스트', 'Stage2']);
+                            const v1 = getVal(['기획', 'Stage1']);
+                            const v0 = getVal(['기획중', 'Stage0']);
 
-                            if (isChecked(v5)) detectedStage = '완료';
-                            else if (isChecked(v4)) detectedStage = '현업파일럿';
-                            else if (isChecked(v3)) detectedStage = '검증';
-                            else if (isChecked(v2)) detectedStage = '개발/테스트';
-                            else if (isChecked(v1)) detectedStage = '구현방안확정';
+                            if (isChecked(v5)) detectedStage = '개발완료';
+                            else if (isChecked(v4)) detectedStage = '현업검증';
+                            else if (isChecked(v3)) detectedStage = '기능구현';
+                            else if (isChecked(v2)) detectedStage = '계획수립';
+                            else if (isChecked(v1)) detectedStage = '기획';
+                            else if (isChecked(v0)) detectedStage = '기획중';
                         }
 
                         return {
@@ -2646,42 +3017,58 @@
                             담당자: lastManager,
                             과제명: getVal(['과제명', '과제', '제목', 'Task']),
                             완료예정일정: getVal(['완료예정일정', '마감일', 'DueDate', '완료일']),
-                            구현방안확정: getVal(['구현방안확정', 'Stage1', '1단계']),
-                            테스트중: getVal(['개발/테스트', 'Stage2', '2단계']),
-                            검증: getVal(['기능 검증', '기능검증', '검증', 'Stage3', '3단계']),
-                            현업파일럿: getVal(['현업 파일럿', '현업파일럿', 'Pilot', 'Stage4', '4단계']),
-                            완료: getVal(['완료', 'Stage5', '5단계']),
+                            기획중: getVal(['기획중', '0단계']),
+                            기획: getVal(['기획', '구현방안확정', 'Stage1', '1단계']),
+                            계획수립: getVal(['계획수립', '개발/테스트', 'Stage2', '2단계']),
+                            기능구현: getVal(['기능구현', '검증', 'Stage3', '3단계']),
+                            현업검증: getVal(['현업검증', '현업파일럿', 'Stage4', '4단계']),
+                            개발완료: getVal(['개발완료', '완료', 'Stage5', '5단계']),
                             단계: detectedStage,
                             진척도: cleanProgress + '%',
                             진척도_이전: cleanPrevProgress + '%',
                             개발Tool: devTool || '-',
                             Stack: stack || '-',
                             비고: rawBigo,
+                            생성일: getVal(['생성일', '등록일', '과제생성일', '등록일자', 'CreatedDate', '입력일']),
                             wid: lastRowWid || extractedWid || wid
                         };
                     });
 
-                    // 유효한 과제 필터링
-                    taskData = mappedData.filter(t => t.과제명 && String(t.과제명).trim() !== '');
+                    // Filter valid tasks (must have task name)
+                    const finalMappedData = mappedData.filter(t => t.과제명 && String(t.과제명).trim() !== '');
                     const finalWid = extractedWid || wid || '';
-                    
+
+                    // Pin-to-Pin Comparison logic (If current file lacks previous progress, lookup from storage)
+                    const allWeeklyData = JSON.parse(localStorage.getItem('ax_weekly_tasks') || '{}');
+                    const sortedWids = Object.keys(allWeeklyData).sort((a, b) => b.localeCompare(a));
+                    const currentIdx = sortedWids.indexOf(finalWid);
+                    const prevWid = (currentIdx !== -1 && currentIdx < sortedWids.length - 1) ? sortedWids[currentIdx + 1] : (sortedWids.length > 0 ? sortedWids[0] : null);
+                    const prevWeekData = (prevWid && prevWid !== finalWid) ? allWeeklyData[prevWid] : null;
+
+                    taskData = finalMappedData.map(t => {
+                        let pProgress = t.진척도_이전 ? String(t.진척도_이전).replace('%','') : '';
+                        if ((!pProgress || pProgress === '0' || pProgress === '0%') && prevWeekData) {
+                            const match = prevWeekData.find(pt => pt.과제명 === t.과제명 && pt.부서명 === t.부서명);
+                            if (match) pProgress = String(match.진척도).replace('%','');
+                        }
+                        return { ...t, 진척도_이전: (pProgress || String(t.진척도).replace('%','')) + '%' };
+                    });
+
                     if (finalWid) {
                         selectedWid = finalWid;
-                        reportTitle = `${finalWid} (${sheetName}) 과제 진척 리포트`;
-                    } else {
-                        reportTitle = `${sheetName} 과제 진척 리포트`;
+                        reportTitle = `${finalWid} 과제 진척 리포트`;
+                        allWeeklyData[finalWid] = taskData;
+                        localStorage.setItem('ax_weekly_tasks', JSON.stringify(allWeeklyData));
+                        localStorage.setItem('ax_selected_wid', finalWid);
+                        localStorage.setItem('ax_task_data', JSON.stringify(taskData));
+                        localStorage.setItem('ax_report_title', reportTitle);
+                        
+                        // Firebase Sync
+                        await FirebaseManager.saveTaskData(finalWid, taskData);
+                        if (typeof updateAvailableWids === 'function') await updateAvailableWids();
                     }
 
-                    console.log("✅ [Final TaskData Sample]:", taskData.slice(0, 3));
-                    saveTaskData();
-                    
-                    showToast(`${taskData.length}개의 과제 데이터를 분석 중입니다...`, 'info');
-                    await FirebaseManager.saveTaskData(finalWid || 'Default', taskData);
-                    
-                    // 주차 목록 갱신
-                    if (typeof updateAvailableWids === 'function') await updateAvailableWids();
-                    
-                    showToast('엑셀 데이터가 성공적으로 업로드되었습니다.', 'success');
+                    showToast(`${finalWid} 리포트 데이터가 업데이트되었습니다.`, 'success');
                     await switchWid(finalWid);
                 }
             };
@@ -2701,13 +3088,97 @@
             wrapper.className = 'animate-fade-in space-y-8';
             if (page === 'dashboard') {
                     // 1. Dashboard KPI Data Extraction & Calculation
+                    // 1. Dashboard KPI Data Extraction & Calculation
                     const ongoingCount = taskData.filter(t => t.단계 && t.단계 !== '완료').length;
                     const regTotal = taskData.length;
-                    const regMonth = Math.ceil(regTotal * 0.15); // Derived logic: approx 15% are from current month
-                    const doneTotal = taskData.filter(t => t.단계 === '완료').length;
-                    const doneMonth = Math.ceil(doneTotal * 0.2); // Derived logic: approx 20% of completions are recent
+                    
+                    const now = new Date();
+                    const currentMonth = now.getMonth();
+                    const currentYear = now.getFullYear();
+
+                    const allHistoryData = JSON.parse(localStorage.getItem('ax_weekly_tasks') || '{}');
+                    
+                    // Helper: Map WID to Month (2026 basis)
+                    const getMonthFromWID = (wid) => {
+                        if (!wid || !wid.startsWith('W')) return null;
+                        const weekNum = parseInt(wid.substring(1));
+                        if (isNaN(weekNum)) return null;
+                        if (weekNum <= 4) return 0; // Jan
+                        if (weekNum <= 8) return 1; // Feb
+                        if (weekNum <= 13) return 2; // Mar
+                        if (weekNum <= 17) return 3; // Apr
+                        if (weekNum <= 22) return 4; // May (Current: W19 is May)
+                        if (weekNum <= 26) return 5; // Jun
+                        return Math.floor((weekNum - 1) / 4.33);
+                    };
+
+                    // Helper: Check if task is completed
+                    const isTaskCompleted = (stage) => stage === '완료' || stage === '개발완료' || stage === 'Stage5';
+
+                    // Consolidate all tasks across all weeks for global stats
+                    const globalTaskMap = new Map();
+                    
+                    // 1. Process History (Ensure we include all uploaded data)
+                    Object.keys(allHistoryData).forEach(w => {
+                        allHistoryData[w].forEach(t => {
+                            const key = `${String(t.부서명).trim()}_${String(t.과제명).trim()}`;
+                            const isDone = isTaskCompleted(t.단계);
+                            
+                            if (!globalTaskMap.has(key)) {
+                                globalTaskMap.set(key, { ...t, firstDoneWid: isDone ? w : null });
+                            } else {
+                                const existing = globalTaskMap.get(key);
+                                if (isDone) {
+                                    if (!isTaskCompleted(existing.단계) || !existing.firstDoneWid || parseInt(w.substring(1)) < parseInt(existing.firstDoneWid.substring(1))) {
+                                        globalTaskMap.set(key, { ...t, firstDoneWid: w });
+                                    }
+                                }
+                            }
+                        });
+                    });
+
+                    // 2. Process Current Data
+                    taskData.forEach(t => {
+                        const key = `${String(t.부서명).trim()}_${String(t.과제명).trim()}`;
+                        const isDone = isTaskCompleted(t.단계);
+                        const existing = globalTaskMap.get(key);
+                        
+                        if (!existing) {
+                            globalTaskMap.set(key, { ...t, firstDoneWid: isDone ? t.wid : null });
+                        } else {
+                            if (isDone) {
+                                if (!isTaskCompleted(existing.단계) || !existing.firstDoneWid || (t.wid && parseInt(t.wid.substring(1)) < parseInt(existing.firstDoneWid.substring(1)))) {
+                                    globalTaskMap.set(key, { ...t, firstDoneWid: t.wid });
+                                }
+                            }
+                        }
+                    });
+
+                    const allUniqueTasks = Array.from(globalTaskMap.values());
+                    
+                    // regMonth logic
+                    const regMonthTasks = allUniqueTasks.filter(t => {
+                        if (t.생성일) {
+                            const cDate = new Date(t.생성일);
+                            if (!isNaN(cDate) && cDate.getMonth() === currentMonth) return true;
+                        }
+                        const m = getMonthFromWID(t.wid);
+                        return m === currentMonth;
+                    });
+                    const regMonth = regMonthTasks.length;
+
+                    // Global Completion Stats (Cumulative 2026)
+                    const doneTotal = allUniqueTasks.filter(t => isTaskCompleted(t.단계)).length;
+                    
+                    // Monthly Completion (Based on the week it was first marked done)
+                    const doneMonth = allUniqueTasks.filter(t => {
+                        if (!isTaskCompleted(t.단계) || !t.firstDoneWid) return false;
+                        const m = getMonthFromWID(t.firstDoneWid);
+                        return m === currentMonth;
+                    }).length;
+
                     const bestTotal = bestTasks ? bestTasks.length : 0;
-                    const aiCostTotal = 1250; // Cumulative 2026 (만원)
+                    const aiCostTotal = 1250; 
 
                     // 2. Security Context (Fallback logic)
                     const criticalTasks = taskData.filter(t => t.진척도 && parseFloat(t.진척도) < 10 && t.단계 === '개발/테스트').length;
@@ -2895,7 +3366,7 @@
                                 <i data-lucide="file-signature" class="w-12 h-12"></i>
                             </div>
                             <h2 class="text-4xl font-bold text-white">정보 보안 및 AI 활용 준수 서약서</h2>
-                            <p class="text-slate-400 mt-4">본 서약은 (주)이랜텍의 소중한 지식 자산을 보호하고 안전한 AI 활용 문화를 정착시키기 위함입니다.</p>
+                            <p class="text-slate-400 mt-4">본 서약은 동양이엔피의 소중한 지식 자산을 보호하고 안전한 AI 활용 문화를 정착시키기 위함입니다.</p>
                         </div>
 
                         <div class="glass p-10 rounded-[3rem] border border-slate-700 bg-slate-900/50">
@@ -2915,7 +3386,7 @@
                                 
                                 <div class="pt-10 text-center border-t border-slate-800 mt-10">
                                     <p class="text-lg font-bold text-white">2026년 05월 09일</p>
-                                    <p class="text-2xl font-bold text-white mt-4">(주)이랜텍 AX추진단 귀하</p>
+                                    <p class="text-2xl font-bold text-white mt-4">동양이엔피 AX추진단 귀하</p>
                                 </div>
                             </div>
 
@@ -2954,12 +3425,12 @@
                         <div style="width: 297mm; height: 210mm; padding: 20mm; background: white; color: black; font-family: 'Malgun Gothic', 'Dotum', sans-serif; position: relative; border: 10px double #eee;">
                             <div style="text-align: center; margin-bottom: 20mm;">
                                 <h1 style="font-size: 32pt; font-weight: bold; margin-bottom: 10mm;">정보 보안 및 AI 활용 준수 서약서</h1>
-                                <p style="font-size: 14pt; color: #666;">(주)이랜텍 AX 혁신 플랫폼</p>
+                                <p style="font-size: 14pt; color: #666;">동양이엔피 AX 혁신 플랫폼</p>
                             </div>
                             
                             <div style="font-size: 13pt; line-height: 1.8; margin-bottom: 10mm;">
                                 <p style="font-weight: bold; font-size: 16pt; margin-bottom: 5mm; border-bottom: 2px solid #000; display: inline-block;">서약 내용</p>
-                                <p>본인은 (주)이랜텍의 소중한 지식 자산을 보호하고 안전한 AI 활용 문화를 정착시키기 위해 다음과 같이 서약합니다.</p>
+                                <p>본인은 동양이엔피의 소중한 지식 자산을 보호하고 안전한 AI 활용 문화를 정착시키기 위해 다음과 같이 서약합니다.</p>
                                 <ul style="margin-top: 10mm; list-style-type: none; padding-left: 0;">
                                     <li style="margin-bottom: 5mm;">1. <b>사내 보안 미승인 AI 서비스 사용 금지</b>: 허가되지 않은 개인용 AI 툴 사용을 금합니다.</li>
                                     <li style="margin-bottom: 5mm;">2. <b>데이터 비식별화 준수</b>: 프롬프트 입력 시 개인정보 및 기밀사항을 가공하여 입력합니다.</li>
@@ -2978,7 +3449,7 @@
                                         <p style="font-size: 12pt; margin-bottom: 4mm;">소속: ____________________</p>
                                         <p style="font-size: 12pt;">성명: ____________________ (인)</p>
                                     </div>
-                                    <h2 style="font-size: 24pt; font-weight: bold;">(주)이랜텍 AX추진단 귀하</h2>
+                                    <h2 style="font-size: 24pt; font-weight: bold;">동양이엔피 AX추진단 귀하</h2>
                                 </div>
                             </div>
                         </div>
@@ -4661,11 +5132,28 @@ const phone = "010-1234-5678";`;
             modal.classList.remove('flex');
         }
 
-        // Initial Render
-        renderPage(currentState.currentPage || 'dashboard');
-        
-        // Ensure Lucide icons are initialized globally
-        lucide.createIcons();
+        // Initial Render & Cleanup
+        (async function() {
+            // [One-time Cleanup] W-17 삭제 요청 처리 (LocalStorage 잔류 시)
+            try {
+                const widsToDelete = ["W-17", "W17"];
+                const storedWids = JSON.parse(localStorage.getItem('ax_available_wids') || '[]');
+                const needsCleanup = widsToDelete.some(w => storedWids.includes(w));
+                
+                if (needsCleanup) {
+                    for (const w of widsToDelete) {
+                        await FirebaseManager.deleteWeeklyTaskData(w);
+                    }
+                    console.log("🧹 [Cleanup] W-17 data removed from local storage.");
+                }
+            } catch (e) {}
+
+            renderPage(currentState.currentPage || 'dashboard');
+            lucide.createIcons();
+            
+            // Sync with Firebase
+            initDataSync();
+        })();
     </script>
 </body>
 </html>
